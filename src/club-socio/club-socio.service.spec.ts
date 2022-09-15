@@ -124,7 +124,7 @@ describe('ClubSocioService', () => {
 
     const updatedClub: ClubEntity = await service.updateMembersFromClub(
       club.id,
-      [sociosList[0].id],
+      [sociosList[0]],
     );
     expect(updatedClub).not.toBeNull();
     expect(updatedClub.socios.length).toEqual(1);

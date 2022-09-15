@@ -37,7 +37,7 @@ export class SocioService {
     if (!socio.email.includes('@')) {
       throw new BusinessLogicException(
         'Invalid email for socio should contain @',
-        BusinessError.NOT_FOUND,
+        BusinessError.BAD_REQUEST,
       );
     }
     return await this.socioRepository.save(socio);
@@ -47,7 +47,7 @@ export class SocioService {
     if (!socio.email.includes('@')) {
       throw new BusinessLogicException(
         'Invalid email for socio should contain @',
-        BusinessError.NOT_FOUND,
+        BusinessError.BAD_REQUEST,
       );
     }
 

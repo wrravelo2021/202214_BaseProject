@@ -37,7 +37,7 @@ export class ClubService {
     if (club.description.length > 100) {
       throw new BusinessLogicException(
         'The club description cant be longer than 100 character',
-        BusinessError.NOT_FOUND,
+        BusinessError.BAD_REQUEST,
       );
     }
 
@@ -56,7 +56,7 @@ export class ClubService {
     if (club.description.length > 100) {
       throw new BusinessLogicException(
         'The club description cant be longer than 100 character',
-        BusinessError.NOT_FOUND,
+        BusinessError.BAD_REQUEST,
       );
     }
 
