@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SocioEntity } from './socio.entity';
 import { SocioService } from './socio.service';
+import { SocioEntity } from './socio.entity';
+import { SocioController } from './socio.controller';
 
 @Module({
   providers: [SocioService],
   imports: [TypeOrmModule.forFeature([SocioEntity])],
-  controllers: [],
+  controllers: [SocioController],
 })
-export class ClubModule {}
+export class SocioModule {}
