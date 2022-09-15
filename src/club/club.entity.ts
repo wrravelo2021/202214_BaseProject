@@ -1,4 +1,4 @@
-import { SocioEntity } from 'src/socio/socio.entity';
+import { SocioEntity } from '../socio/socio.entity';
 import {
   Column,
   Entity,
@@ -16,7 +16,7 @@ export class ClubEntity {
   name: string;
 
   @Column()
-  foundation_date: string;
+  foundation_date: Date;
 
   @Column()
   image_url: string;
