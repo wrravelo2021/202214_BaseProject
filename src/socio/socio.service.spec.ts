@@ -124,4 +124,32 @@ describe('SocioService', () => {
       'The socio with the given id was not found',
     );
   });
+
+  it('should validate socio email when creating a new socio', async () => {
+    const socio: SocioEntity = {
+      id: '1',
+      name: faker.company.name(),
+      email: 'bademail',
+      birthday: new Date(),
+      clubs: [],
+    };
+
+    await expect(() => service.create(socio)).rejects.toHaveProperty(
+      'message',
+      'Invalid email for socio should contain @',
+    );
+  });
+
+  it('should validate socio email when updating a socio', async () => {
+    let socio: SocioEntity = sociosList[0];
+    socio = {
+      ...socio,
+      email: 'bademail',
+    };
+
+    await expect(() => service.update(socio.id, socio)).rejects.toHaveProperty(
+      'message',
+      'Invalid email for socio should contain @',
+    );
+  });
 });

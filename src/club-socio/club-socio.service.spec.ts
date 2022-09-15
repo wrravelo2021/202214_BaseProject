@@ -6,7 +6,6 @@ import { SocioEntity } from '../socio/socio.entity';
 import { Repository } from 'typeorm';
 import { ClubSocioService } from './club-socio.service';
 import { faker } from '@faker-js/faker';
-import { ClubSocioModule } from './club-socio.module';
 
 describe('ClubSocioService', () => {
   let service: ClubSocioService;

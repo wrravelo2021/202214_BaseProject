@@ -34,10 +34,23 @@ export class SocioService {
   }
 
   async create(socio: SocioEntity): Promise<SocioEntity> {
+    if (!socio.email.includes('@')) {
+      throw new BusinessLogicException(
+        'Invalid email for socio should contain @',
+        BusinessError.NOT_FOUND,
+      );
+    }
     return await this.socioRepository.save(socio);
   }
 
   async update(id: string, socio: SocioEntity): Promise<SocioEntity> {
+    if (!socio.email.includes('@')) {
+      throw new BusinessLogicException(
+        'Invalid email for socio should contain @',
+        BusinessError.NOT_FOUND,
+      );
+    }
+
     const persistedSocio: SocioEntity = await this.socioRepository.findOne({
       where: { id: `${id}` },
     });
