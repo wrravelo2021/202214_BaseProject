@@ -34,6 +34,13 @@ export class ClubService {
   }
 
   async create(club: ClubEntity): Promise<ClubEntity> {
+    if (club.description.length > 100) {
+      throw new BusinessLogicException(
+        'The club description cant be longer than 100 character',
+        BusinessError.NOT_FOUND,
+      );
+    }
+
     return await this.clubRepository.save(club);
   }
 
@@ -46,6 +53,13 @@ export class ClubService {
         'The club with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+    if (club.description.length > 100) {
+      throw new BusinessLogicException(
+        'The club description cant be longer than 100 character',
+        BusinessError.NOT_FOUND,
+      );
+    }
+
     club.id = id;
     return await this.clubRepository.save(club);
   }

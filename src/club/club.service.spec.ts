@@ -127,4 +127,33 @@ describe('ClubService', () => {
       'The club with the given id was not found',
     );
   });
+
+  it('should throw an exception if description is longer than 100 characters when creating club', async () => {
+    const club: ClubEntity = {
+      id: '1',
+      name: faker.company.name(),
+      foundation_date: new Date(),
+      image_url: faker.image.imageUrl(),
+      description: 'W'.repeat(101),
+      socios: [],
+    };
+
+    await expect(() => service.create(club)).rejects.toHaveProperty(
+      'message',
+      'The club description cant be longer than 100 character',
+    );
+  });
+
+  it('should throw an exception if description is longer than 100 characters when updating club', async () => {
+    let club: ClubEntity = clubsList[0];
+    club = {
+      ...club,
+      description: 'W'.repeat(101),
+    };
+
+    await expect(() => service.update(club.id, club)).rejects.toHaveProperty(
+      'message',
+      'The club description cant be longer than 100 character',
+    );
+  });
 });
